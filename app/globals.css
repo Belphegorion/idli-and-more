@@ -1,0 +1,176 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --bg-main: #FAF6EC;
+    --surface: #FFFDF7;
+    --text-primary: #2B1D14;
+    --text-secondary: #6B5444;
+    --accent-leaf: #2F5D3A;
+    --accent-gold: #E0A526;
+    --highlight-kumkum: #B3261E;
+    --border-sandalwood: #E8DCC4;
+    --deep-leaf: #1F3F28;
+  }
+
+  body {
+    background-color: var(--bg-main);
+    color: var(--text-primary);
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, .font-serif {
+    font-family: 'Fraunces', Georgia, serif;
+    font-feature-settings: "opsz" 32, "salt" 1;
+  }
+}
+
+/* Temple Border Utilities */
+.temple-border {
+  background-image: repeating-linear-gradient(
+    45deg,
+    #2F5D3A 0px,
+    #2F5D3A 6px,
+    #E0A526 6px,
+    #E0A526 12px
+  );
+  height: 4px;
+}
+
+.temple-border-gold {
+  background-image: repeating-linear-gradient(
+    45deg,
+    #E0A526 0px,
+    #E0A526 6px,
+    #FAF6EC 6px,
+    #FAF6EC 12px
+  );
+  height: 4px;
+}
+
+/* Button & Card Hover Micro-Interactions */
+.btn-gold-glow {
+  transition: transform 180ms cubic-bezier(0.23, 1, 0.32, 1), box-shadow 180ms cubic-bezier(0.23, 1, 0.32, 1), background-color 180ms ease;
+  will-change: transform;
+}
+
+.btn-gold-glow:hover {
+  transform: translateY(-1.5px);
+  box-shadow: 0 4px 20px rgba(224, 165, 38, 0.35);
+}
+
+.btn-gold-glow:active {
+  transform: translateY(0.5px) scale(0.98);
+}
+
+.card-subtle-hover {
+  transition: transform 240ms cubic-bezier(0.23, 1, 0.32, 1), box-shadow 240ms cubic-bezier(0.23, 1, 0.32, 1), border-color 240ms ease;
+  will-change: transform;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .card-subtle-hover:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px -4px rgba(43, 29, 20, 0.08);
+  }
+}
+
+/* Steam Animation Keyframes */
+@keyframes steam-drift {
+  0% {
+    transform: translateY(0) scaleX(1);
+    opacity: 0;
+  }
+  20% {
+    opacity: 0.6;
+  }
+  80% {
+    opacity: 0.4;
+  }
+  100% {
+    transform: translateY(-40px) scaleX(1.4);
+    opacity: 0;
+  }
+}
+
+.animate-steam-1 {
+  animation: steam-drift 3.5s cubic-bezier(0.23, 1, 0.32, 1) infinite;
+}
+
+.animate-steam-2 {
+  animation: steam-drift 4.2s cubic-bezier(0.23, 1, 0.32, 1) 1.2s infinite;
+}
+
+.animate-steam-3 {
+  animation: steam-drift 3.8s cubic-bezier(0.23, 1, 0.32, 1) 2.1s infinite;
+}
+
+/* Badge Glow Pulse */
+@keyframes badge-glow-pulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.4;
+    transform: scale(0.85);
+  }
+}
+
+.animate-badge-pulse {
+  animation: badge-glow-pulse 2.4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Kolam Draw Keyframes */
+@keyframes kolam-draw {
+  from {
+    stroke-dashoffset: 320;
+    opacity: 0.2;
+  }
+  to {
+    stroke-dashoffset: 0;
+    opacity: 1;
+  }
+}
+
+.kolam-path-draw {
+  stroke-dasharray: 320;
+  stroke-dashoffset: 0;
+  animation: kolam-draw 1.6s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+}
+
+/* Print Specific Rules for A4 Table-Tent QR Cards */
+@media print {
+  body {
+    background: white !important;
+    color: black !important;
+  }
+  .no-print {
+    display: none !important;
+  }
+  .print-page {
+    page-break-after: always;
+  }
+}
+
+/* Accessibility: Respect prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .card-subtle-hover:hover {
+    transform: none !important;
+  }
+  .btn-gold-glow:hover {
+    transform: none !important;
+  }
+}
