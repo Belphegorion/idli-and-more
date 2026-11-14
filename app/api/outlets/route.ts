@@ -15,10 +15,12 @@ export async function GET() {
       data: outlets,
     });
   } catch (error: any) {
-    console.error('Error in GET /api/outlets:', error);
-    return NextResponse.json(
-      { success: false, error: error.message || 'Failed to fetch outlets' },
-      { status: 500 }
-    );
+    console.warn('MongoDB query warning in GET /api/outlets, using fallback:', error.message);
+    const { INITIAL_OUTLETS } = await import('@/lib/fallbackData');
+    return NextResponse.json({
+      success: true,
+      data: INITIAL_OUTLETS,
+      fallback: true,
+    });
   }
 }

@@ -13,11 +13,12 @@ import { Footer } from '@/components/public/Footer';
 import { CartDrawer } from '@/components/public/CartDrawer';
 import { ReservationModal } from '@/components/public/ReservationModal';
 import { PublicMenuItem, PublicCategory, PublicOutlet, CartItem } from '@/lib/types';
+import { INITIAL_CATEGORIES, INITIAL_MENU_ITEMS, INITIAL_OUTLETS } from '@/lib/fallbackData';
 
 export default function HomePage() {
-  const [menuItems, setMenuItems] = useState<PublicMenuItem[]>([]);
-  const [categories, setCategories] = useState<PublicCategory[]>([]);
-  const [outlets, setOutlets] = useState<PublicOutlet[]>([]);
+  const [menuItems, setMenuItems] = useState<PublicMenuItem[]>(INITIAL_MENU_ITEMS);
+  const [categories, setCategories] = useState<PublicCategory[]>(INITIAL_CATEGORIES);
+  const [outlets, setOutlets] = useState<PublicOutlet[]>(INITIAL_OUTLETS);
   const [settings, setSettings] = useState<any>(null);
   const [cart, setCart] = useState<CartItem[]>([]);
   const [isCartOpen, setIsCartOpen] = useState(false);
