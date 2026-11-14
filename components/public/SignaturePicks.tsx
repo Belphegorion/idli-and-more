@@ -57,12 +57,12 @@ export const SignaturePicks: React.FC<SignaturePicksProps> = ({
                 }`}
               >
                 <div>
-                  {/* Photo plinth */}
-                  <div className="relative aspect-16/10 rounded-xl overflow-hidden mb-3 bg-[#E8DCC4]/30">
+                  {/* Photo plinth - calibrated height, perfectly framed */}
+                  <div className="relative w-full h-44 sm:h-48 rounded-xl overflow-hidden mb-3.5 bg-[#FAF6EC] border border-[#E8DCC4]/60 shrink-0">
                     <img
-                      src={item.imageUrl || 'https://images.unsplash.com/photo-1589301760014-d929f3979dbc?auto=format&fit=crop&w=600&q=80'}
+                      src={item.imageUrl || 'https://images.unsplash.com/photo-1589301760014-d929f3979dbc?auto=format&fit=crop&w=800&q=80'}
                       alt={item.name}
-                      className="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
+                      className="w-full h-full object-cover object-center transition-transform duration-500 ease-out group-hover:scale-105"
                       loading="lazy"
                     />
 

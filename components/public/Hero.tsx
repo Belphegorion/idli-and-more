@@ -116,11 +116,11 @@ export const Hero: React.FC<HeroProps> = ({
 
               {/* Banana Leaf Plinth Card */}
               <div className="relative rounded-3xl overflow-hidden shadow-2xl border-4 border-[#FFFDF7] bg-[#2F5D3A] p-2">
-                <div className="relative aspect-4/3 rounded-2xl overflow-hidden bg-[#FAF6EC]">
+                <div className="relative aspect-[4/3] max-h-[360px] w-full rounded-2xl overflow-hidden bg-[#FAF6EC]">
                   <img
                     src={heroImage}
                     alt="Authentic Ghee Podi Thatte Idli on fresh banana leaf"
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-cover object-center"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
 
